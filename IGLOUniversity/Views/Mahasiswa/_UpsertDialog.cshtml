@@ -1,0 +1,145 @@
+﻿
+<div class="popup-dialog upsertMahasiswa-dialog">
+    <div class="header">
+        <h1 class="font-putih">Form Mahasiswa</h1>
+
+    </div>
+
+    <form class="form-add-Mahasiswa" method="post" asp-action="Save">
+        <input type="text" class="id" hidden>
+        <div class="field-row">
+            <label> NIM</label>
+            <input type="text" class="nim">
+        </div>
+        <span class="validation-message" data-for="Nim"></span>
+        <div class="field-row">
+            <label>Nama Depan</label>
+            <input type="text" class="namaDepan">
+        </div>
+        <span class="validation-message" data-for="NamaDepan"></span>
+        <div class="field-row">
+            <label>Nama Tengah</label>
+            <input type="text" class="namaTengah">
+        </div>
+        <span class="validation-message" data-for="NamaTengah"></span>
+
+        <div class="field-row">
+            <label>Nama Belakang</label>
+            <input type="text" class="namaBelakang">
+        </div>
+        <span class="validation-message" data-for="NamaBelakang"></span>
+        <div class="field-row">
+            <label>Asal SMA</label>
+            <input type="text" class="asalSma">
+        </div>
+        <span class="validation-message" data-for="AsalSma"></span>
+        <div class="field-row">
+            <label>NomorHp</label>
+            <input type="text" class="nomorHp">
+        </div>
+        <span class="validation-message" data-for="NomorHp"></span>
+        <div class="field-row">
+            <label>Alamat</label>
+            <textarea type="text" class="alamat"></textarea>
+        </div>
+        <span class="validation-message" data-for="Alamat"></span>
+
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a class="btn btn-secondary close-button mt-4">Close</a>
+
+    </form>
+
+
+</div>
+<script>
+    $(".btn-addMahasiswa").click(function () {
+        event.preventDefault();
+        $(".modal-layer").css("display", "flex");
+        $(".upsertMahasiswa-dialog").css("display", "block")
+        document.querySelector(".upsertMahasiswa-dialog .id").value = 0;
+    })
+
+    $(".btn-update-modal").click(function () {
+        event.preventDefault();
+
+        let valueUrl = $(this).attr("href");
+        $.ajax({
+            url: valueUrl,
+            success: function (result) {
+                console.log(result)
+
+                $(".modal-layer").css("display", "flex");
+                $(".upsertMahasiswa-dialog").css("display", "block");
+
+                $(".upsertMahasiswa-dialog .id").val(result.id);
+                $(".upsertMahasiswa-dialog .nim").val(result.nim);
+                $(".upsertMahasiswa-dialog .namaDepan").val(result.namaDepan);
+                $(".upsertMahasiswa-dialog .namaTengah").val(result.namaTengah);
+                $(".upsertMahasiswa-dialog .namaBelakang").val(result.namaBelakang);
+                $(".upsertMahasiswa-dialog .asalSma").val(result.asalSma);
+                $(".upsertMahasiswa-dialog .nomorHp").val(result.nomorHp);
+                $(".upsertMahasiswa-dialog .alamat").val(result.alamat);
+            },
+            fail: function () { console.log("Fail") },
+            error: function () { console.log("Internal server eror") }
+        })
+
+    })
+    $(".upsertMahasiswa-dialog form").submit(function (event) {
+        
+        event.preventDefault();
+        let urlAction = "/Mahasiswa/Save";
+        var id = $(".upsertMahasiswa-dialog .id").val();
+        var nim = $(".upsertMahasiswa-dialog .nim").val();
+        var namaDepan = $(".upsertMahasiswa-dialog .namaDepan").val();
+        var namaTengah = $(".upsertMahasiswa-dialog .namaTengah").val();
+        var namaBelakang = $(".upsertMahasiswa-dialog .namaBelakang").val();
+        var asalSma = $(".upsertMahasiswa-dialog .asalSma").val();
+        var nomorHp = $(".upsertMahasiswa-dialog .nomorHp").val();
+        var alamat = $(".upsertMahasiswa-dialog .alamat").val();
+
+        let viewModel = {
+            "id": id,
+            "nim": nim,
+            "namaDepan": namaDepan,
+            "namaTengah": namaTengah,
+            "namaBelakang": namaBelakang,
+            "asalSMA": asalSma,
+            "nomorHp": nomorHp,
+            "alamat": alamat
+        }
+
+        var token = $(`[name = "__RequestVerificationToken"]`).val();
+
+        $.ajax({
+            method: "POST",
+            url: urlAction,
+            data: JSON.stringify(viewModel),
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            headers: {
+                "__RequestVerificationToken": token
+            },
+            success: function (result) {
+                console.log(result);
+                if(result.success){
+
+                    window.location.reload();
+                }
+                generateValidationMessege(result.validation)
+            },
+
+            fail: function () { console.log("Fail") },
+            error: function () { console.log("Internal Server Error") }
+        });
+    });
+
+    function generateValidationMessege(validations) {
+        for (let item of validations) {
+            let propertyName = item.propertyName;
+            let msg = item.messegerError;
+            $(`.upsertMahasiswa-dialog form [data-for=${propertyName}]`).text(msg);
+        }
+    }
+
+</script>

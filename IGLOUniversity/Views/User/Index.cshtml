@@ -1,0 +1,69 @@
+﻿@using IGLOUniversity.ViewModel.User
+
+@model IndexUserViewModel
+
+@{
+    ViewData["Title"] = "Index User";
+}
+
+@section modalDialog{
+    <div class="modal-layer">
+        <partial name="_UpsertDialog"></partial>
+    <partial name="_DeleteDialog"></partial>
+    </div>
+    <script>
+        $(".close-button").click(function (event) {
+            event.preventDefault();
+            $(".upsert-dialog form span").empty();
+            $(".modal-layer").removeAttr("style");
+            $(".popup-dialog").removeAttr("style");
+            //$(".field-row input").val("");
+            //$(".validation-message").empty();
+            location.reload();
+        });
+    </script>
+}
+
+<h2>Master User</h2>
+
+<div class="wrapp-content">
+    <table>
+        <div class="field-row">
+            <a class="btn  btn-secondary btn-addUser"><i class="fas fa-plus"></i>Tambah User</a>
+        </div>
+        <thead style="text-align:center;">
+            <tr>
+                <th>Username</th>
+                <th>Status</th>
+                <th>Admin</th>
+                <th>Mahasiswa</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Grid)
+            {
+                <tr>
+                    <td>@item.UserName</td>
+                    <td>@item.Status</td>
+                    <td>@item.IsAdmin</td>
+                    <td>@item.Mahasiswa</td>
+                    <td class="noTbl">
+                        <a class="btn btn-warning btn-update-modal" asp-action="EditPopup" asp-route-id="@item.Id"><i class="fas fa-edit"></i></a>
+                        <a class="btn btn-danger btn-delete-modal" asp-action="DeletePopup" asp-route-id="@item.Id"><i class="fas fa-trash"></i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>Total Data : @Model.TotalData</td>
+                <td colspan="3">
+                    @for (int i = 1; i <= Model.TotalHalaman; i++)
+                    {
+                        <a class="btn btn-add btn-secondary btn-group" asp-action="Index" asp-route-page="@i">@i</a>
+                    }
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>

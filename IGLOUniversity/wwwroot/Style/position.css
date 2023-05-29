@@ -1,0 +1,95 @@
+html {
+  background-color: wheat;
+}
+.positioning {
+  background-color: grey;
+}
+.positioning > .block {
+  color: white;
+  width: 150px;
+  height: 70px;
+}
+.positioning > .block:nth-child(1) {
+  background: red;
+}
+.positioning > .block:nth-child(2) {
+  background: blueviolet;
+}
+.positioning > .block:nth-child(3) {
+  background: orange;
+}
+.positioning > .block:nth-child(4) {
+  background: yellow;
+}
+.positioning > .block:nth-child(5) {
+  background: brown;
+}
+.positioning > .block:nth-child(6) {
+  background-color: yellowgreen;
+}
+.positioning > .block:nth-child(7) {
+  background-color: cadetblue;
+}
+.positioning > .block:nth-child(8) {
+  background-color: rgb(91, 81, 77);
+}
+.blok {
+}
+.static {
+  position: static;
+  top: 100px;
+  left: 150px;
+}
+.absolute {
+  position: absolute;
+
+  top: 100px;
+  left: 150px;
+}
+.relative {
+  position: relative;
+
+  top: 100px;
+  left: 150px;
+}
+.fixed {
+  /* position: fixed; */
+
+  top: 100px;
+  left: 150px;
+}
+.parent-position {
+  background-color: chocolate;
+}
+.parent-position > .block {
+  border: solid white 1px;
+  background-color: yellowgreen;
+  width: 150px;
+  height: 150px;
+}
+.static-parent {
+  position: static;
+}
+.absolute-parent {
+  position: absolute;
+  left: 10px;
+}
+.relative-parent {
+  position: relative;
+  margin-top: 20px;
+  top: 120px;
+}
+.fixed-parent {
+  position: fixed;
+  top: 150px;
+  left: 200px;
+}
+.child {
+  margin-top: 20px;
+  background-color: orange;
+  color: white;
+  height: 50px;
+  left: 500px;
+  width: 50px;
+  position: static;
+}

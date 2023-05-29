@@ -1,0 +1,17 @@
+D:\BC35\.Net Framework\Finaltest\IGLOUniversity\IGLOGlobalConnfiguration\bin\Debug\net6.0\IGLOUniversity.Utility.deps.json
+D:\BC35\.Net Framework\Finaltest\IGLOUniversity\IGLOGlobalConnfiguration\bin\Debug\net6.0\IGLOUniversity.Utility.dll
+D:\BC35\.Net Framework\Finaltest\IGLOUniversity\IGLOGlobalConnfiguration\bin\Debug\net6.0\IGLOUniversity.Utility.pdb
+D:\BC35\.Net Framework\Finaltest\IGLOUniversity\IGLOGlobalConnfiguration\bin\Debug\net6.0\IGLOUniversity.ViewModel.dll
+D:\BC35\.Net Framework\Finaltest\IGLOUniversity\IGLOGlobalConnfiguration\bin\Debug\net6.0\IGLOUniversity.ViewModel.pdb
+D:\BC35\.Net Framework\Finaltest\IGLOUniversity\IGLOGlobalConnfiguration\obj\Debug\net6.0\IGLOUniversity.Utility.csproj.AssemblyReference.cache
+D:\BC35\.Net Framework\Finaltest\IGLOUniversity\IGLOGlobalConnfiguration\obj\Debug\net6.0\IGLOUniversity.Utility.GeneratedMSBuildEditorConfig.editorconfig
+D:\BC35\.Net Framework\Finaltest\IGLOUniversity\IGLOGlobalConnfiguration\obj\Debug\net6.0\IGLOUniversity.Utility.AssemblyInfoInputs.cache
+D:\BC35\.Net Framework\Finaltest\IGLOUniversity\IGLOGlobalConnfiguration\obj\Debug\net6.0\IGLOUniversity.Utility.AssemblyInfo.cs
+D:\BC35\.Net Framework\Finaltest\IGLOUniversity\IGLOGlobalConnfiguration\obj\Debug\net6.0\IGLOUniversity.Utility.csproj.CoreCompileInputs.cache
+D:\BC35\.Net Framework\Finaltest\IGLOUniversity\IGLOGlobalConnfiguration\obj\Debug\net6.0\IGLOUniversity.Utility.csproj.CopyComplete
+D:\BC35\.Net Framework\Finaltest\IGLOUniversity\IGLOGlobalConnfiguration\obj\Debug\net6.0\IGLOUniversity.Utility.dll
+D:\BC35\.Net Framework\Finaltest\IGLOUniversity\IGLOGlobalConnfiguration\obj\Debug\net6.0\refint\IGLOUniversity.Utility.dll
+D:\BC35\.Net Framework\Finaltest\IGLOUniversity\IGLOGlobalConnfiguration\obj\Debug\net6.0\IGLOUniversity.Utility.pdb
+D:\BC35\.Net Framework\Finaltest\IGLOUniversity\IGLOGlobalConnfiguration\obj\Debug\net6.0\ref\IGLOUniversity.Utility.dll
+D:\BC35\.Net Framework\Finaltest\IGLOUniversity\IGLOGlobalConnfiguration\bin\Debug\net6.0\IGLOUniversity.DataAccess.dll
+D:\BC35\.Net Framework\Finaltest\IGLOUniversity\IGLOGlobalConnfiguration\bin\Debug\net6.0\IGLOUniversity.DataAccess.pdb

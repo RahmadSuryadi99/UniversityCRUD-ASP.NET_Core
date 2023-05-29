@@ -1,0 +1,8 @@
+﻿Scaffold-DbContext "Server=LAPTOP-J9DU5J54;Database=IGLOUniversity;TrustServerCertificate = True; Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+Scaffold-DbContext "Server=LAPTOP-J9DU5J54;Database=Atlas user=sa;password=indocyber;Trusted_Connection=false;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+
+Persist Security Info=False;
+TrustServerCertificate = False
+
+untuk update tambah 
+-Force

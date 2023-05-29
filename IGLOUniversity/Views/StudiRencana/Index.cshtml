@@ -1,0 +1,78 @@
+﻿@using IGLOUniversity.ViewModel.RencanaStudi;
+
+@model IndexRencanaStudiViewModel;
+
+@{
+    ViewData["Title"] = "Rencan Studi - Ku";
+}
+
+@section modalDialog{
+    <div class="modal-layer">
+
+        @*<partial name="_UpsertDialog"></partial>*@
+    </div>
+    <script>
+        $(".close-button").click(function (event) {
+            event.preventDefault();
+            $(".modal-layer").removeAttr("style");
+            $(".popup-dialog").removeAttr("style");
+            location.reload();
+        });
+    </script>
+}
+<h2>Atur Rencana Studi</h2>
+
+<div class="wrapp-content">
+    <div class="field-row">
+    </div>
+    <table>
+        <thead style="text-align:center;">
+            <tr>
+                <th>NIM</th>
+                <th>Nama</th>
+                <th>Asal SMA</th>
+                <th>Nomor HP</th>
+                <th>Alamat</th>
+                <th>Total SKS</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @if (@Model.Grid != null)
+            {
+
+                @foreach (var item in Model.Grid)
+                {
+                    <tr>
+                        <td>@item.Nim</td>
+                        <td>@item.NamaDepan @item.NamaTengah @item.NamaBelakang</td>
+                        <td>@item.AsalSma</td>
+                        <td>@item.NomorHp</td>
+                        <td>@item.Alamat</td>
+                        <td>@item.Sks</td>
+                        <td class="noTbl">
+                            <a class="btn btn-warning btn-update-modal" asp-action="Detail" asp-route-id="@item.Id">Detail<i class="fas fa-edit"></i></a>
+    
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                @if (@Model.TotalData != null)
+                {
+                    <td>Total Data : @Model.TotalData</td>
+                    <td colspan="5">
+                        <div class="btn-group">
+                            @for (int i = 1; i <= Model.TotalHalaman; i++)
+                            {
+                                <a class="btn btn-secondary" asp-action="Index" asp-route-page="@i">@i</a>
+                            }
+                        </div>
+                    </td>
+                }
+            </tr>
+        </tfoot>
+    </table>
+</div>

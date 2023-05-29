@@ -1,0 +1,63 @@
+﻿
+<div class="popup-dialog delete-dialog">
+
+
+    <h1>yakin menghapus data <span class="data-delete"></span> ?</h1>
+    <div>
+
+        <a class="btn btn-secondary btn-delete">ya</a>
+        <a href="javascript:;" class="btn btn-secondary close-button">tutup</a>
+    </div>
+</div>
+
+<div class="popup-dialog message-dialog">
+    <header>
+        <h1>Delete Mahsiswa</h1>
+        <a class="close-button" href="javascript:;">
+            <i class="fa fa-close"></i>
+        </a>
+    </header>
+    <div>
+        <p class="message"></p>
+        <a class="btn btn-delete close-button" href="javascript:;">OK</a>
+    </div>
+</div>
+<script>
+    $(".btn-delete-modal").click(function () {
+        event.preventDefault();
+        $(".modal-layer").css("display", "flex");
+        $(".delete-dialog ").css("display", "block");
+
+
+        let urlAction = $(this).attr("href");
+        $(".btn-delete").attr("href", urlAction)
+
+    })
+
+    $(".delete-dialog .btn-delete").click(function (event) {
+        event.preventDefault();
+        let urlAction = $(this).attr("href");
+
+        $.ajax({
+            url: urlAction,
+            success: function (response) {
+                console.log(response)
+                if (response.success) {
+
+                    $(".delete-dialog").removeAttr("style");
+                    $(".message-dialog").css("display", "block");
+                    $('.message-dialog .message').text(response.message)
+                }
+                else {
+                    $(".delete-dialog").removeAttr("style");
+                    $(".message-dialog").css("display", "block");
+                    $('.message-dialog .message').text(response.message)
+                }
+            },
+            fail: function () { console.log("Fail") },
+            error: function () { console.log("Internal Server Error") }
+        });
+
+    });
+
+</script>

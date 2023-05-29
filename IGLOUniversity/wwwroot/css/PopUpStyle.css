@@ -1,0 +1,60 @@
+﻿.modal-layer {
+    display: none; /*nanti setelah di-click akan jadi flex*/
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+.popup-dialogAdd {
+    display: none; /*nanti setelah di-click akan jadi block*/
+    background-color: white;
+    padding: 20px;
+    border-radius: 6px;
+    min-width: 300px;
+}
+.popup-dialog {
+    display: none; /*nanti setelah di-click akan jadi block*/
+    background-color: white;
+    padding: 20px;
+    border-radius: 6px;
+    min-width: 300px;
+}
+
+    .popup-dialog header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+
+        .popup-dialog header > h1 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        .popup-dialog header > .close-button {
+            font-size: 20px;
+            color: red;
+        }
+
+    .popup-dialog td {
+        padding: 10px 30px 10px 0;
+    }
+
+        .popup-dialog td:first-child {
+            /*color: #14acf8;*/
+            font-weight: bold;
+        }
+
+    .popup-dialog form [type=submit] {
+        margin-top: 20px;
+    }
+
+.validation-message {
+    color: #e84118;
+    font-weight: bold;
+    font-size: 14px;
+}

@@ -1,0 +1,140 @@
+﻿<div class="popup-dialog upsert-dialog">
+    <div class="header">
+        <h1 class="font-putih">Form Kelas</h1>
+
+    </div>
+
+  <form class="form-add" method="post" >
+      @*  <div class="field-row">
+            <label class="idLabel">Id</label>*@
+            <input type="text" id="id" placeholder="Id" hidden/>
+        @*</div>*@
+        <div class="field-row">
+            <label>Nama Kelas</label>
+            <input type="text" id="nama" placeholder="Nama Kelas" />
+        </div>
+        <span data-for="Nama"></span>
+        <div class="field-row">
+            <label>Mata Kuliah</label>
+            <select id="matkul">              
+            </select>
+        </div>
+        <span data-for="Matakuliah"></span>
+        <div class="field-row">
+            <label>Semester</label>
+            <input type="text" id="semester" placeholder="Semester" />
+        </div>
+        <div class="field-row">
+            <label>Kapasitas</label>
+            <input type="number" id="kapasitas" placeholder="Kapasitas" />
+        </div>
+        <span data-for="kapasitas"></span>
+        <div class="field-row">
+            <button class="btn btn-success" type="submit" >Save</button>
+
+            <a class="btn btn-secondary close-button mt-4">Close</a>
+        </div>
+    </form>
+
+
+</div>
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            method: "GET",
+            url: "/Matakuliah/GetDropDownMatakuliah",
+            success: function (data) {
+                var option = `<option value=@null>-- Select Status --</option>`;
+                for (var item of data) {
+                    let value = item.intValue;
+                    let text = item.text;
+                    option += `<option value="${value}">${text}</option>`;
+                    $(`#matkul`).html(option);
+                }
+            }
+        });
+    });
+
+    $(".btn-add").click(function () {
+        event.preventDefault();
+        $(".modal-layer").css("display", "flex");
+        $(".upsert-dialog").css("display", "block")
+        document.querySelector(".upsert-dialog #id").value = 0;
+
+    })
+
+    $(".form-add").submit(function (event) {
+                event.preventDefault();
+        var id = $(".upsert-dialog #id").val();
+        var nama = $(".upsert-dialog #nama").val();
+        var matkul = $(".upsert-dialog #matkul").val();
+        var semester = $(".upsert-dialog #semester").val();
+        var kapasitas = $(".upsert-dialog #kapasitas").val();
+
+        let viewModel = {
+            "id": id,
+            "nama": nama,
+            "idMatakuliah": matkul,
+            "semester": semester,
+            "kapasitas":kapasitas
+        }
+        var token = $(`[name = "__RequestVerificationToken"]`).val();
+
+        console.log("anjsa");
+        $.ajax({
+            method: "POST",
+            url: "/Kelas/Save",
+            data: JSON.stringify(viewModel),
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            headers: {
+                "__RequestVerificationToken": token
+            },
+            success: function (result) {
+                console.log(result);
+                //if (result.success) {
+                //$('.form-add')[0].reset();
+                    location.reload();
+                //}
+                generateValidationMessege(result.validation)
+            },
+
+            fail: function () { console.log("Fail") },
+            error: function () { console.log("Internal Server Error") }
+        });
+    });
+
+    function generateValidationMessege(validations) {
+        for (let item of validations) {
+            let propertyName = item.propertyName;
+            let msg = item.messegerError;
+            $(`.upsert-dialog form [data-for=${propertyName}]`).text(msg);
+        }
+    }
+
+    $(".btn-update-modal").click(function (event) {
+        event.preventDefault();
+        let valueUrl = $(this).attr("href");
+        $.ajax({
+            url: valueUrl,
+            success: function (result) {
+
+              $(".upsert-dialog #id").val(result.id);
+                $(".upsert-dialog #nama").val(result.nama);
+                $(".upsert-dialog #matkul").val(result.idMatakuliah);
+                $(".upsert-dialog #semester").val(result.semester);
+               $(".upsert-dialog #kapasitas").val(result.kapasitas);
+
+
+                $(".modal-layer").css("display", "flex");
+                $(".upsert-dialog").css("display", "block")
+
+            },
+            fail: function () { console.log("fail") }
+            , error: function () { console.log("internal Server Error") }
+        });
+    });
+
+
+
+</script>

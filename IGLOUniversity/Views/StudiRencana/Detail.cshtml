@@ -1,0 +1,77 @@
+﻿@using IGLOUniversity.ViewModel.RencanaStudi;
+
+@model DetailRencanaStudiViewModel;
+
+@{
+    ViewData["Title"] = "Rencan Studi - Ku";
+}
+
+@section modalDialog{
+    <div class="modal-layer">
+
+        @*<partial name="_UpsertDialog"></partial>*@
+    </div>
+    <script>
+        $(".close-button").click(function (event) {
+            event.preventDefault();
+            $(".modal-layer").removeAttr("style");
+            $(".popup-dialog").removeAttr("style");
+            location.reload();
+        });
+    </script>
+}
+<h2>Atur Rencana Studi>>Detail</h2>
+
+<div class="wrapp-content">
+    <div>
+
+        <h3>NIM :  @Model.NIM</h3>
+    </div>
+    <div>
+
+        <h3>NAMA :  @Model.Nama</h3>
+    </div>
+    <div>
+
+        <h3>Asal SMA :  @Model.AsalSma</h3>
+    </div>
+</div>
+<div class="wrapp-content">
+    <div class="field-row">
+        <a class="btn btn-primary">TAMBAH</a>
+    </div>
+    <table>
+        <thead style="text-align:center;">
+            <tr>
+                <th>Nama</th>
+                <th>Mata Kuliah</th>
+                <th>SKS</th>
+                <th>Semester</th>
+                <th>Kapasitas</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @if (@Model.Grid != null)
+            {
+
+                @foreach (var item in Model.Grid)
+                {
+                    <tr>
+                        <td>@item.Nama=</td>
+                        <td>@item.Matakuliah</td>
+                        <td>@item.SKS</td>
+                        <td>@item.Semester</td>
+                        <td>@item.Kapasitas</td>
+                        <td>@item.Status</td>
+                        <td class="noTbl">
+                            <a class="btn btn-danger btn-update-modal" asp-action="Delete" asp-route-id="@item.Id">Delete<i class="fas fa-trash"></i></a>
+
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

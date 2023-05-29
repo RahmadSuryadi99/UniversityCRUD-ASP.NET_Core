@@ -1,0 +1,78 @@
+﻿@using IGLOUniversity.ViewModel.Mahasiswa
+
+@model IndexMahasiswaViewModel
+
+@{
+    ViewData["Title"] = "Index Mahasiswa";
+}
+@section modalDialog{
+    <div class="modal-layer">
+        <partial name="_UpsertDialog"></partial>
+        <partial name="_DeleteDialog"></partial>
+    </div>
+    <script>
+        $(".close-button").click(function (event) {
+            event.preventDefault();
+            $(".modal-layer").removeAttr("style");
+            $(".popup-dialog").removeAttr("style");
+            //$(".field-row input").val("");
+            //$(".validation-message").empty();
+            location.reload();
+        });
+    </script>
+}
+<h2>Master Mahasiswa</h2>
+
+<div class="wrapp-content">
+    <div class="field-row">
+        <a class="btn btn-secondary btn-addMahasiswa"><i class="fas fa-plus"></i>Tambah Mahasiswa</a>
+    </div>
+    <table>
+        <thead style="text-align:center;">
+            <tr>
+                <th>NIM</th>
+                <th>Nama</th>
+                <th>Asal SMA</th>
+                <th>Nomor HP</th>
+                <th>Alamat</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @if (@Model.Grid != null)
+            {
+
+                @foreach (var item in Model.Grid)
+                {
+                    <tr>
+                        <td>@item.Nim</td>
+                        <td>@item.NamaDepan @item.NamaTengah @item.NamaBelakang</td>
+                        <td>@item.AsalSma</td>
+                        <td>@item.NomorHp</td>
+                        <td>@item.Alamat</td>
+                        <td class="noTbl">
+                            <a class="btn btn-warning btn-update-modal" asp-action="Edit" asp-route-id="@item.Id"><i class="fas fa-edit"></i></a>
+                            <a class="btn btn-danger btn-delete-modal" asp-action="Delete" asp-route-id="@item.Id"><i class="fas fa-trash"></i></a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                @if (@Model.TotalData != null)
+                {
+                    <td>Total Data : @Model.TotalData</td>
+                    <td colspan="4">
+                        <div class="btn-group">
+                            @for (int i = 1; i <= Model.TotalHalaman; i++)
+                            {
+                                <a class="btn btn-secondary" asp-action="Index" asp-route-page="@i">@i</a>
+                            }
+                        </div>
+                    </td>
+                }
+            </tr>
+        </tfoot>
+    </table>
+</div>

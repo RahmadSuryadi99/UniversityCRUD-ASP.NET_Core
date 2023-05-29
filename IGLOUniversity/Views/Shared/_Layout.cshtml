@@ -1,0 +1,75 @@
+﻿@using Basilisk.ViewModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - IGLOUniversity</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/IGLOUniversity.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Style/font-awesome.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Style/normalize.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Style/style.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Style/form.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/PopUpStyle.css" asp-append-version="true" />
+
+</head>
+<body>
+    <div class="header">
+        <h1 class="font-putih "> Selamat Datang di Aplikasi Universitas IGLO </h1>
+        <div>
+
+            <div style="text-align">
+                <label class="font-putih">Username : @ViewBag.Username</label><br />
+                <label class="font-putih">Role : @ViewBag.Role</label>
+            </div>
+            <a class="btn btn-primary" asp-controller="user" asp-action="Logout">LogOut</a>
+        </div>
+    </div>
+
+    <div class="main-body">
+        <div class="navSide">
+            @{
+                var username = (ViewBag.Username == null) ? "Anonymous" : ViewBag.Username;
+                var role = (ViewBag.Role == null) ? "Guest" : ViewBag.Role;
+                IEnumerable<MenuViewModel> listMenu = (IEnumerable<MenuViewModel>)ViewBag.Menus;
+            }
+            @if (listMenu != null)
+            {
+                @foreach (var menu in listMenu)
+                {
+                    <div class="Btn-nav font-putih "> <a class=" nav-link text-dark" asp-area="" asp-controller="@menu.Controller" asp-action="@menu.Action"><span class="font-putih">@menu.Title</span></a></div>
+
+                }
+            }
+            @*<div class="Btn-nav font-putih "> <a class=" nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"><span class="font-putih">Home</span></a></div>
+            <div class="Btn-nav font-putih "> <a class=" nav-link text-dark" asp-area="" asp-controller="User" asp-action="Index"><span class="font-putih">User</span></a></div>
+            <div class="Btn-nav font-putih "> <a class=" nav-link text-dark" asp-area="" asp-controller="Mahasiswa" asp-action="Index"><span class="font-putih">Master Mahasiswa</span></a></div>
+            <div class="Btn-nav font-putih "> <a class=" nav-link text-dark" asp-area="" asp-controller="Matakuliah" asp-action="Index"><span class="font-putih">Master Matakuliah</span></a></div>
+            <div class="Btn-nav font-putih "> <a class=" nav-link text-dark" asp-area="" asp-controller="Kelas" asp-action="Index"><span class="font-putih">Master Kelas</span></a></div>
+            <div class="Btn-nav font-putih "> <a class=" nav-link text-dark" asp-area="" asp-controller="RencanaStudi" asp-action="Index"><span class="font-putih">Atur Rencana Studi</span></a></div>
+        *@</div>
+
+        <div class="body-content">
+            <div class="container">
+                <main role="main" class="pb-3">
+                    @RenderBody()
+                </main>
+            </div>
+        </div>
+        <footer class="border-top footer-custome text-muted">
+            <div class="container">
+                <h1>Aplikasi ini dibuat oleh Rahmad Suryadi </h1>
+            </div>
+        </footer>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://kit.fontawesome.com/23b1419e82.js" defer asp-append-version="true" crossorigin="anonymous"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+    @RenderSection("modalDialog",required : false)
+</body>
+</html>

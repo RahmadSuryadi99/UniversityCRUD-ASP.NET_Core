@@ -1,0 +1,156 @@
+﻿
+<div class="popup-dialog upsertUser-dialog">
+    <div class="header">
+        <h1 class="font-putih">Form user</h1>
+
+    </div>
+
+    <form class="form-add-user" method="post" >
+        <input type="text" class="id" hidden>
+
+        <div class="field-row">
+            <label>User Name</label>
+            <input type="text" class="userName">
+        </div>
+        <span class="validation-message" data-for="UserName"></span>
+        <div class="field-row">
+            <label>Status</label>
+            <select class="status"> </select>
+        </div>
+        <div class="field-row">
+            <label>Admin</label>
+            <input type="checkbox" class="admin">
+        </div>
+        <div class="field-row">
+            <label>Mahasiswa</label>
+            <select type="text" class="mahasiswa"> </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a class="btn btn-secondary close-button mt-4">Close</a>
+
+    </form>
+
+
+</div>
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            method: "GET",
+            url: "/User/GetStatusDropDown",
+            success: function (data) {
+                var option = `<option value=@null>-- Select Status --</option>`;
+                for (var item of data) {
+                    let value = item.stringValue;
+                    let text = item.text;
+                    option += `<option value="${value}">${text}</option>`;
+
+                    $(`.status`).html(option);
+                }
+            }
+        }); 
+        $.ajax({
+            method: "GET",
+            url: "/User/GetMahasiswaDropDown",
+            success: function (data) {
+                var option = `<option value=@null>-- Select Status --</option>`;
+                for (var item of data) {
+                    let value = item.intValue;
+                    let text = item.text;
+                    option += `<option value="${value}">${text}</option>`;
+
+                    $(`.mahasiswa`).html(option);
+                }
+            }
+        });
+    });
+    $(".btn-addUser").click(function () {
+        event.preventDefault();
+        $(".modal-layer").css("display", "flex");
+        $(".upsertUser-dialog").css("display", "block")
+        document.querySelector(".upsertUser-dialog .id").value = 0;
+      
+    })
+
+    $(".form-add-user").submit(function (event) {
+        event.preventDefault();
+        var id = $(".upsertUser-dialog .id").val();
+        var userName = $(".upsertUser-dialog .userName").val();
+        var status = $(".upsertUser-dialog .status").val();
+        var admin = $(".upsertUser-dialog .admin")[0].checked;
+        var mahasiswa = $(".upsertUser-dialog .mahasiswa").val();
+
+        let viewModel={
+            "id":id,
+            "userName":userName,
+            "status":status,
+            "isAdmin": admin,
+            "mahasiswaId": mahasiswa,
+            "password": "indocyber"
+        }
+        var token = $(`[name = "__RequestVerificationToken"]`).val();
+        $.ajax({
+            method: "POST",
+            url: "/User/Save",
+            data: JSON.stringify(viewModel),
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            headers: {
+                "__RequestVerificationToken": token
+            },
+            success: function (result) {
+                console.log(result);
+                if (result.success == true) {
+                    location.reload();
+                }
+                generateValidationMessege(result.validation)
+            },
+
+            fail: function () { console.log("Fail") },
+            error: function () { console.log("Internal Server Error") }
+        });
+    });
+
+    function generateValidationMessege(validations) {
+        for (let item of validations) {
+            let propertyName = item.propertyName;
+            let msg = item.messegerError;
+            $(`.upsertUser-dialog form [data-for=${propertyName}]`).text(msg);
+        }
+    }
+
+    $(".btn-update-modal").click(function (event) {
+        event.preventDefault();
+        let valueUrl = $(this).attr("href");
+        $.ajax({
+            url: valueUrl,
+            success: function (result) {
+                console.log("succes");
+                if (result.mahasiswaId == null) {
+                    document.querySelector(".upsertUser-dialog .mahasiswa").value = "";
+                } else {
+                    document.querySelector(".upsertUser-dialog .mahasiswa").value = result.mahasiswaId;
+                }
+                document.querySelector(".upsertUser-dialog .userName").value = result.userName;
+                document.querySelector(".upsertUser-dialog .status").value = result.status;
+                document.querySelector(".upsertUser-dialog .admin").checked = result.isAdmin;
+                document.querySelector(".upsertUser-dialog .id").value = result.id;
+
+                if (result.isAdmin) {
+                    $(".mahasiswa").attr("disabled", true);
+                } else {
+                    $(".mahasiswa").attr("disabled", false);
+                }
+
+
+                $(".modal-layer").css("display", "flex");
+                $(".upsertUser-dialog").css("display", "block")
+
+            },
+            fail: function () { console.log("fail") }
+            , error: function () { console.log("internal Server Error") }
+        });
+    });
+
+
+    
+</script>

@@ -1,0 +1,14 @@
+D:\BC35\.Net Framework\Finaltest\IGLOUniversity\IGLOUniversity.DataAccess\bin\Debug\net6.0\IGLOUniversity.DataAccess.deps.json
+D:\BC35\.Net Framework\Finaltest\IGLOUniversity\IGLOUniversity.DataAccess\bin\Debug\net6.0\IGLOUniversity.DataAccess.runtimeconfig.json
+D:\BC35\.Net Framework\Finaltest\IGLOUniversity\IGLOUniversity.DataAccess\bin\Debug\net6.0\IGLOUniversity.DataAccess.dll
+D:\BC35\.Net Framework\Finaltest\IGLOUniversity\IGLOUniversity.DataAccess\bin\Debug\net6.0\IGLOUniversity.DataAccess.pdb
+D:\BC35\.Net Framework\Finaltest\IGLOUniversity\IGLOUniversity.DataAccess\obj\Debug\net6.0\IGLOUniversity.DataAccess.csproj.AssemblyReference.cache
+D:\BC35\.Net Framework\Finaltest\IGLOUniversity\IGLOUniversity.DataAccess\obj\Debug\net6.0\IGLOUniversity.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+D:\BC35\.Net Framework\Finaltest\IGLOUniversity\IGLOUniversity.DataAccess\obj\Debug\net6.0\IGLOUniversity.DataAccess.AssemblyInfoInputs.cache
+D:\BC35\.Net Framework\Finaltest\IGLOUniversity\IGLOUniversity.DataAccess\obj\Debug\net6.0\IGLOUniversity.DataAccess.AssemblyInfo.cs
+D:\BC35\.Net Framework\Finaltest\IGLOUniversity\IGLOUniversity.DataAccess\obj\Debug\net6.0\IGLOUniversity.DataAccess.csproj.CoreCompileInputs.cache
+D:\BC35\.Net Framework\Finaltest\IGLOUniversity\IGLOUniversity.DataAccess\obj\Debug\net6.0\IGLOUniversity.DataAccess.dll
+D:\BC35\.Net Framework\Finaltest\IGLOUniversity\IGLOUniversity.DataAccess\obj\Debug\net6.0\refint\IGLOUniversity.DataAccess.dll
+D:\BC35\.Net Framework\Finaltest\IGLOUniversity\IGLOUniversity.DataAccess\obj\Debug\net6.0\IGLOUniversity.DataAccess.pdb
+D:\BC35\.Net Framework\Finaltest\IGLOUniversity\IGLOUniversity.DataAccess\obj\Debug\net6.0\IGLOUniversity.DataAccess.genruntimeconfig.cache
+D:\BC35\.Net Framework\Finaltest\IGLOUniversity\IGLOUniversity.DataAccess\obj\Debug\net6.0\ref\IGLOUniversity.DataAccess.dll

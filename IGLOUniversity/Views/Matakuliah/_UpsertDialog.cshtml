@@ -1,0 +1,118 @@
+﻿
+<div class="popup-dialog upsert-dialog">
+    <div class="header">
+        <h1 class="font-putih">Form Matakuliah</h1>
+
+    </div>
+
+    <form class="form-add" method="post" >
+        <input type="text" class="id" hidden>
+
+        <div class="field-row">
+            <label>Name</label>
+            <input type="text" class="nama">
+        </div>
+          <span class="validation-message" data-for="Nama"></span>
+
+
+          <div class="field-row">
+            <label>SKS</label>
+            <input type="number" class="sks" min=0> </input>
+        </div>
+          <span class="validation-message" data-for="Sks"></span>
+
+        <div class="field-row">
+            <label>Deskripsi</label>
+            <input type="text" class="deskripsi">
+        </div>
+          <span class="validation-message" data-for="Deskripsi"></span>
+
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a class="btn btn-secondary close-button mt-4">Close</a>
+
+    </form>
+
+
+</div>
+<script>
+
+    $(".btn-add").click(function () {
+        event.preventDefault();
+        $(".modal-layer").css("display", "flex");
+        $(".upsert-dialog").css("display", "block")
+        document.querySelector(".upsert-dialog .id").value = 0;
+
+    })
+
+    $(".form-add").submit(function (event) {
+        event.preventDefault();
+        var id = $(".upsert-dialog .id").val();
+        var name = $(".upsert-dialog .nama").val();
+        var sks = $(".upsert-dialog .sks").val();
+        var deskripsi = $(".upsert-dialog .deskripsi").val();
+
+        let viewModel={
+            "id":id,
+            "nama":name,
+            "sks":sks,
+            "deskripsi": deskripsi
+        }
+        var token = $(`[name = "__RequestVerificationToken"]`).val();
+
+        $.ajax({
+            method: "POST",
+            url: "/Matakuliah/Save",
+            data: JSON.stringify(viewModel),
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            headers: {
+                "__RequestVerificationToken": token
+            },
+            success: function (result) {
+                console.log(result);
+                if (result.success) {
+                    //$(".form-add")[0].reset()
+                    window.location.reload();
+                }
+                generateValidationMessege(result.validation)
+            },
+
+            fail: function () { console.log("Fail") },
+            error: function () { console.log("Internal Server Error") }
+        });
+    });
+
+    function generateValidationMessege(validations) {
+        for (let item of validations) {
+            let propertyName = item.propertyName;
+            let msg = item.messegerError;
+            $(`.upsert-dialog form [data-for=${propertyName}]`).text(msg);
+        }
+    }
+
+    $(".btn-update-modal").click(function (event) {
+        event.preventDefault();
+        console.log("tes");
+        let valueUrl = $(this).attr("href");
+        $.ajax({
+            url: valueUrl,
+            success: function (result) {
+        
+                document.querySelector(".upsert-dialog .deskripsi").value = result.deskripsi;
+                document.querySelector(".upsert-dialog .sks").value = result.sks;
+                document.querySelector(".upsert-dialog .nama").value = result.nama;
+                document.querySelector(".upsert-dialog .id").value = result.id;
+
+
+                $(".modal-layer").css("display", "flex");
+                $(".upsert-dialog").css("display", "block")
+
+            },
+            fail: function () { console.log("fail") }
+            , error: function () { console.log("internal Server Error") }
+        });
+    });
+
+
+
+</script>

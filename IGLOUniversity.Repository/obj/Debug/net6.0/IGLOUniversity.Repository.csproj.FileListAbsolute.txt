@@ -1,0 +1,15 @@
+D:\BC35\.Net Framework\Finaltest\IGLOUniversity\IGLOUniversity.Repository\bin\Debug\net6.0\IGLOUniversity.Repository.deps.json
+D:\BC35\.Net Framework\Finaltest\IGLOUniversity\IGLOUniversity.Repository\bin\Debug\net6.0\IGLOUniversity.Repository.dll
+D:\BC35\.Net Framework\Finaltest\IGLOUniversity\IGLOUniversity.Repository\bin\Debug\net6.0\IGLOUniversity.Repository.pdb
+D:\BC35\.Net Framework\Finaltest\IGLOUniversity\IGLOUniversity.Repository\bin\Debug\net6.0\IGLOUniversity.DataAccess.dll
+D:\BC35\.Net Framework\Finaltest\IGLOUniversity\IGLOUniversity.Repository\bin\Debug\net6.0\IGLOUniversity.DataAccess.pdb
+D:\BC35\.Net Framework\Finaltest\IGLOUniversity\IGLOUniversity.Repository\obj\Debug\net6.0\IGLOUniversity.Repository.csproj.AssemblyReference.cache
+D:\BC35\.Net Framework\Finaltest\IGLOUniversity\IGLOUniversity.Repository\obj\Debug\net6.0\IGLOUniversity.Repository.GeneratedMSBuildEditorConfig.editorconfig
+D:\BC35\.Net Framework\Finaltest\IGLOUniversity\IGLOUniversity.Repository\obj\Debug\net6.0\IGLOUniversity.Repository.AssemblyInfoInputs.cache
+D:\BC35\.Net Framework\Finaltest\IGLOUniversity\IGLOUniversity.Repository\obj\Debug\net6.0\IGLOUniversity.Repository.AssemblyInfo.cs
+D:\BC35\.Net Framework\Finaltest\IGLOUniversity\IGLOUniversity.Repository\obj\Debug\net6.0\IGLOUniversity.Repository.csproj.CoreCompileInputs.cache
+D:\BC35\.Net Framework\Finaltest\IGLOUniversity\IGLOUniversity.Repository\obj\Debug\net6.0\IGLOUniversity.Repository.csproj.CopyComplete
+D:\BC35\.Net Framework\Finaltest\IGLOUniversity\IGLOUniversity.Repository\obj\Debug\net6.0\IGLOUniversity.Repository.dll
+D:\BC35\.Net Framework\Finaltest\IGLOUniversity\IGLOUniversity.Repository\obj\Debug\net6.0\refint\IGLOUniversity.Repository.dll
+D:\BC35\.Net Framework\Finaltest\IGLOUniversity\IGLOUniversity.Repository\obj\Debug\net6.0\IGLOUniversity.Repository.pdb
+D:\BC35\.Net Framework\Finaltest\IGLOUniversity\IGLOUniversity.Repository\obj\Debug\net6.0\ref\IGLOUniversity.Repository.dll
